@@ -1,11 +1,11 @@
-## tipTipLite is a tooltip plugin.##
+# tipTipLite is a tooltip plugin.#
 Why? Well its mostly like tipTip, but tipTip won't work with canvas or svg (like flot or raphael).
 So tipTipLite offers more control over content, placement, and loading content dynamically, and that's awesome.
-####
+
 tipTipLite will load whatever content you throw at it and place the tooltip next to the mouse given a mouse event:
 
     $("#example_1").click(function(e){
-       $.tipTipLite('an example of some content loaded using jQuery, notice this text is not in the html markup anywhere', {mouse_event: e})
+       $.tipTipLite('some content loaded using jQuery, not from markup', {mouse_event: e})
        return false;
      });
 
