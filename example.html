@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>tipTipLite for jQuery</title>
+  <link href="tipTip.css" media="screen" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.tipTipLite.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $("#example_1").click(function(e){
+        $.tipTipLite('an example of some content loaded using jQuery, notice this text is not in the html markup anywhere', {mouse_event: e})
+        return false;
+      });
+      
+      $("#example_2").click(function(e){
+        var offset = $(this).offset()
+        $.tipTipLite('an example of custom position', {x: 100, y: offset.left})
+        return false;
+      });
+      
+      $("#example_3").click(function(e){
+        $.ajax({
+          url: 'content.json',
+          type: 'GET',
+          dataType: 'json',
+          success: function(json){
+            $.tipTipLite(json, {mouse_event: e})
+          }
+        })
+         return false;
+       });
+    });
+  </script>
+  <style>
+  body{
+    font-family:Helvetica, Arial, sans-serif;
+    color:#444;
+    background:#F1F1F1;
+  }
+  div.intro{
+    border-bottom: 1px solid #CCC;
+    color: #888;
+    display: block;
+    font: italic normal normal 1.5em/normal Georgia, Times, serif;
+    line-height: 1.67em;
+    margin: 0px 0px 1.87em;
+    padding: 0.82em 0px 1.7em;
+    width: 100% 
+  }
+  div.content{
+    width:840px;
+    margin:40px auto 60px auto;
+    padding:20px;
+    border-bottom: 1px solid #CCC;
+  }
+
+  </style>
+</head> 
+<body>
+  <div class="content">
+    <h1>tipTipLite is a tooltip plugin.</h1>
+    <div class="intro">
+      Why? Well its mostly like tipTip, but tipTip won't work with canvas or svg (like flot or raphael). 
+      So tipTipLite offers more control over content, placement, and loading content dynamically, and that's awesome.
+    </div>
+
+    <p>For example, when you <a href="#" id="example_1">click here</a>, a jquery click function is fired, we load the tipTipLite content dynamically, and position it based on the mouse location. </p>
+    <pre>
+      $("#example_1").click(function(e){
+         $.tipTipLite('an example of some content loaded using jQuery, notice this text is not in the html markup anywhere', {mouse_event: e})
+         return false;
+       });
+    </pre>
+    <p>You can provide coordinates when you <a href="#" id="example_2">load tipTipLite</a> which can be handy </p>
+    <pre>
+      $("#example_2").click(function(e){
+        var offset = $(this).offset()
+        $.tipTipLite('an example of custom position', {x: 100, y: offset.left})
+        return false;
+      });
+    </pre>
+    <p>Loading dynamic, ajaxy, content can be fun and rewarding. TipTipLite is designed for you to throw content at <a href="#" id="example_3">like this</a></p>
+    <pre>
+      $("#example_3").click(function(e){
+         $.ajax({
+           url: 'content.json',
+           type: 'GET',
+           dataType: 'json',
+           success: function(json){
+             $.tipTipLite(json, {mouse_event: e})
+           }
+         })
+          return false;
+        });
+    </pre>
+    
+    
+  </div>
+
+  
+</body>
+</html> 
